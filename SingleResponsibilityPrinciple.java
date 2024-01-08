@@ -1,20 +1,23 @@
 import java.util.*;
 
-
 class Customer {
     private String name;
     private String address;
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public String getAddress(){
+
+    public String getAddress() {
         return address;
     }
-    public void setAddress(String address){
-        this.address=address;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
 
@@ -24,66 +27,81 @@ class Order {
     private String itemName;
     private int quantity;
     private int totalBillAmt;
-    public Customer getCustomer(){
+
+    public Customer getCustomer() {
         return customer;
     }
-    public void setCustomer(Customer customer){
-        this.customer=customer;
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-    public String getOrderId(){
+
+    public String getOrderId() {
         return orderId;
     }
-    public void setOrderId(String orderId){
+
+    public void setOrderId(String orderId) {
         Random random = new Random();
-        this.orderId = orderId + "-" +random.nextInt(500);
+        this.orderId = orderId + "-" + random.nextInt(500);
     }
-    public String getItemName(){
+
+    public String getItemName() {
         return itemName;
     }
-    public void setItemName(String itemName){
+
+    public void setItemName(String itemName) {
         this.itemName = itemName;
         setOrderId(itemName);
     }
-    public int getQuantity(){
+
+    public int getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity){
-        this.quantity=quantity;
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-    public int getTotalBillAmt(){
+
+    public int getTotalBillAmt() {
         return totalBillAmt;
     }
-    public void setTotalBillAmt(int totalBillAmt){
+
+    public void setTotalBillAmt(int totalBillAmt) {
         this.totalBillAmt = totalBillAmt;
     }
-    public void prepareOrder(){
+
+    public void prepareOrder() {
         System.out.println("Preparing order for Customer -"
-        + this.getCustomer().getName()+" who has ordered "+this.getItemName());
+                + this.getCustomer().getName() + " who has ordered " + this.getItemName());
     }
 }
 
-class BillCalculation{
-  final private Order order;
-   public BillCalculation(Order order){
-       this.order = order;
-   }
-   public void calculateBill(){
-       Random rand = new Random();
-       int totalAmt = rand.nextInt(200)*this.order.getQuantity();
-       this.order.setTotalBillAmt(totalAmt);
-       System.out.println("Order with order id "+this.order.getOrderId()+" has a total bill amount of "+this.order.getTotalBillAmt());
-   }
+class BillCalculation {
+    final private Order order;
 
+    public BillCalculation(Order order) {
+        this.order = order;
+    }
+
+    public void calculateBill() {
+        Random rand = new Random();
+        int totalAmt = rand.nextInt(200) * this.order.getQuantity();
+        this.order.setTotalBillAmt(totalAmt);
+        System.out.println("Order with order id " + this.order.getOrderId() + " has a total bill amount of "
+                + this.order.getTotalBillAmt());
+    }
 
 }
 
 class DeliveryApp {
 
     final private Order order;
-    public DeliveryApp(Order order) { this.order = order; }
 
-    public void delivery()
-    {
+    public DeliveryApp(Order order) {
+        this.order = order;
+    }
+
+    public void delivery() {
         // Here, we would want to interface with another
         // system which actually assigns the task of
         // delivery to different persons
@@ -100,15 +118,8 @@ class DeliveryApp {
     }
 }
 
-
-
-
-
-
-
-
-class FoodDeliveryApp{
-    public static void main(String[] args){
+class FoodDeliveryApp {
+    public static void main(String[] args) {
         Customer customer1 = new Customer();
         customer1.setName("John");
         customer1.setAddress("Pune");
@@ -119,8 +130,7 @@ class FoodDeliveryApp{
 
         order1.prepareOrder();
 
-        BillCalculation billCalculation
-                = new BillCalculation(order1);
+        BillCalculation billCalculation = new BillCalculation(order1);
         billCalculation.calculateBill();
 
         DeliveryApp deliveryApp = new DeliveryApp(order1);
