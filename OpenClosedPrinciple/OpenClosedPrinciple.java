@@ -1,3 +1,4 @@
+package OpenClosedPrinciple;
 interface VolumeCalculate {
     double getVoulme();
 }

@@ -1,3 +1,4 @@
+package SingleResponsibility;
 import java.util.*;
 
 class Customer {
